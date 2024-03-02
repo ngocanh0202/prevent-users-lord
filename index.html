@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prevent Screenshot Attempt</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="sensitive-content">
+        <h1>This is sensitive content</h1>
+        <p>Try to take a screenshot.</p>
+        <p>Try to copy the content.</p>
+        <input type="text" id="input" value="This is a sensitive content">
+        <br>
+        <br>
+        <textarea id="input-area">This is a sensitive content</textarea>
+    </div>
+    
+    <script>
+        // Preventing the user from taking a screenshot
+        window.addEventListener('keyup', function (e) {
+            if (e.key === 'PrintScreen') {
+                // add a class to the sensitive content
+                document.querySelector('.sensitive-content').classList.add('sensitive-content-blocked');
+                console.log('User tried to take a screenshot');
+                // remove class when user stop screenshot
+                setTimeout(() => {
+                    document.querySelector('.sensitive-content').classList.remove('sensitive-content-blocked');
+                }, 1000);
+            }
+        });
+
+        // Preventing the user from copying the content
+        document.addEventListener('copy', function (e) {
+            e.preventDefault();
+            console.log('User tried to copy the content');
+        });
+
+        // Preventing the user from pasting the content
+        document.addEventListener('paste', function (e) {
+            e.preventDefault();
+            console.log('User tried to paste the content');
+        });
+    </script>
+
+</body>
+
+</html>
