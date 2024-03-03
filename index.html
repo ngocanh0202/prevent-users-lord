@@ -33,6 +33,11 @@
             }
         });
 
+        // prevent user change tab and alert user
+        window.addEventListener('blur', function (e) {
+            alert('Please do not change the tab');
+        });
+
         // Preventing the user from copying the content
         document.addEventListener('copy', function (e) {
             e.preventDefault();
