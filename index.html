@@ -18,7 +18,7 @@
         <br>
         <textarea id="input-area">This is a sensitive content</textarea>
     </div>
-    
+
     <script>
         // Preventing the user from taking a screenshot
         window.addEventListener('keyup', function (e) {
@@ -48,6 +48,13 @@
         document.addEventListener('paste', function (e) {
             e.preventDefault();
             console.log('User tried to paste the content');
+        });
+        
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) {
+                // The tab has become inactive or a screenshot has been taken
+                alert('Screenshots are not allowed!');
+            }
         });
     </script>
 
