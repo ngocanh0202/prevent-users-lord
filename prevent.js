@@ -41,3 +41,7 @@ document.addEventListener('visibilitychange', function () {
         alert('Please do not change the tab!');
     }
 });
+//resize window
+window.addEventListener('resize', function (e) {
+    alert('Please do not resize the window');
+});
