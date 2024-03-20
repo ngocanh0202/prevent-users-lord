@@ -17,47 +17,12 @@
         <br>
         <br>
         <textarea id="input-area">This is a sensitive content</textarea>
+        <p>Upload File</p>
+        <input type="file" id="file" onchange="handleFile()">
     </div>
-
-    <script>
-        // Preventing the user from taking a screenshot
-        window.addEventListener('keyup', function (e) {
-            if (e.key === 'PrintScreen') {
-                // add a class to the sensitive content
-                document.querySelector('.sensitive-content').classList.add('sensitive-content-blocked');
-                console.log('User tried to take a screenshot');
-                // remove class when user stop screenshot
-                setTimeout(() => {
-                    document.querySelector('.sensitive-content').classList.remove('sensitive-content-blocked');
-                }, 1000);
-            }
-        });
-
-        // prevent user change tab and alert user
-        window.addEventListener('blur', function (e) {
-            alert('Please do not change the tab');
-        });
-
-        // Preventing the user from copying the content
-        document.addEventListener('copy', function (e) {
-            e.preventDefault();
-            console.log('User tried to copy the content');
-        });
-
-        // Preventing the user from pasting the content
-        document.addEventListener('paste', function (e) {
-            e.preventDefault();
-            console.log('User tried to paste the content');
-        });
-        
-        document.addEventListener('visibilitychange', function () {
-            if (document.hidden) {
-                // The tab has become inactive or a screenshot has been taken
-                alert('Screenshots are not allowed!');
-            }
-        });
-    </script>
-
+    <div id="output"></div>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="index.js"></script>
+    <script src="prevent.js"></script>    
 </body>
-
 </html>

@@ -21,3 +21,16 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
+table{
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+td{
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+th{
+    border: 1px solid #ddd;
+}
